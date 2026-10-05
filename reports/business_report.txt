@@ -1,0 +1,44 @@
+
+AI SALES ANALYTICS - BUSINESS REPORT
+====================================
+
+KEY PERFORMANCE INDICATORS
+--------------------------
+Total Revenue: 60,521,870.58 TL
+Total Quantity: 5405
+Average Revenue per Transaction: 60,521.87 TL
+
+
+PRODUCT PERFORMANCE
+-------------------
+Best Performing Product: Laptop
+Product Revenue: 23,863,777.00 TL
+
+
+REGIONAL PERFORMANCE
+--------------------
+Best Performing Region: Bursa
+Regional Revenue: 10,607,116.33 TL
+
+
+MONTHLY PERFORMANCE
+--------------------
+Best Month: 2026-03
+Best Month Revenue: 6,620,607.52 TL
+
+Lowest Month: 2026-10
+Lowest Month Revenue: 3,360,023.05 TL
+
+
+BUSINESS INSIGHTS
+-----------------
+1. Laptop is the highest-revenue product in the dataset.
+
+2. Bursa is the strongest-performing region based on revenue.
+
+3. 2026-03 generated the highest monthly revenue.
+
+4. 2026-10 generated the lowest monthly revenue.
+
+5. The dataset contains 5405 units sold
+   and generated 60,521,870.58 TL in total revenue.

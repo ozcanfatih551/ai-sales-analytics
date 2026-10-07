@@ -36,10 +36,21 @@ Create a concise executive business report containing:
 Rules:
 - Use only the information provided.
 - Do not invent numbers or facts.
+- Do not interpret an incomplete current month as a full-month performance.
+- If the latest month is incomplete, explicitly mention that its revenue is partial.
+- Do not claim seasonality unless the provided data supports a seasonal pattern.
+- Distinguish between observed facts and business recommendations.
+- Avoid unsupported causal explanations.
 - Mention important figures when relevant.
 - Make practical business recommendations.
 - Write in professional English.
 - Focus on actionable insights.
+- Do not treat an incomplete current month as a completed month.
+- If the latest month is partial, explicitly state that it contains partial data.
+- Do not describe the latest partial month as the worst-performing month.
+- Do not claim seasonality unless the provided data clearly supports a seasonal pattern.
+- Do not invent causes for increases or decreases.
+- Clearly distinguish observed facts from recommendations.
 
 SALES ANALYTICS REPORT
 ======================

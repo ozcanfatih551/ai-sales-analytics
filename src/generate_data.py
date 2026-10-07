@@ -24,6 +24,7 @@ REGIONS = [
 ]
 
 START_DATE = datetime(2026, 1, 1)
+END_DATE = datetime.now()
 NUMBER_OF_ROWS = 1000
 
 
@@ -31,7 +32,8 @@ def generate_sales_data():
     rows = []
 
     for _ in range(NUMBER_OF_ROWS):
-        random_days = random.randint(0, 364)
+        total_days = (END_DATE - START_DATE).days
+        random_days = random.randint(0, total_days)
         date = START_DATE + timedelta(days=random_days)
 
         product = random.choice(list(PRODUCTS.keys()))

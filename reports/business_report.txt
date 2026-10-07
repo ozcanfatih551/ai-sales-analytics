@@ -2,43 +2,44 @@
 AI SALES ANALYTICS - BUSINESS REPORT
 ====================================
 
+DATA PERIOD
+-----------
+Data Through: 2026-10-07
+Latest Month Status: 2026-10 is the current month and contains partial data through 2026-10-07.
+
 KEY PERFORMANCE INDICATORS
 --------------------------
-Total Revenue: 60,521,870.58 TL
-Total Quantity: 5405
-Average Revenue per Transaction: 60,521.87 TL
-
+Total Revenue: 60,713,142.74 TL
+Total Quantity: 5364
+Average Revenue per Transaction: 60,713.14 TL
 
 PRODUCT PERFORMANCE
 -------------------
 Best Performing Product: Laptop
-Product Revenue: 23,863,777.00 TL
-
+Product Revenue: 22,077,202.86 TL
 
 REGIONAL PERFORMANCE
 --------------------
-Best Performing Region: Bursa
-Regional Revenue: 10,607,116.33 TL
-
+Best Performing Region: Antalya
+Regional Revenue: 11,422,715.16 TL
 
 MONTHLY PERFORMANCE
---------------------
-Best Month: 2026-03
-Best Month Revenue: 6,620,607.52 TL
+-------------------
+Best Completed Month: 2026-05
+Best Completed Month Revenue: 7,683,660.82 TL
 
-Lowest Month: 2026-10
-Lowest Month Revenue: 3,360,023.05 TL
+Lowest Completed Month: 2026-09
+Lowest Completed Month Revenue: 5,576,420.98 TL
 
+Latest Month Revenue: 1,495,151.83 TL
 
 BUSINESS INSIGHTS
 -----------------
 1. Laptop is the highest-revenue product in the dataset.
-
-2. Bursa is the strongest-performing region based on revenue.
-
-3. 2026-03 generated the highest monthly revenue.
-
-4. 2026-10 generated the lowest monthly revenue.
-
-5. The dataset contains 5405 units sold
-   and generated 60,521,870.58 TL in total revenue.
+2. Antalya is the strongest-performing region based on revenue.
+3. 2026-05 generated the highest revenue among completed months.
+4. 2026-09 generated the lowest revenue among completed months.
+5. The latest month's data may be incomplete and should not be directly
+   compared with completed months.
+6. The dataset contains 5364 units sold and generated
+   60,713,142.74 TL in total revenue.

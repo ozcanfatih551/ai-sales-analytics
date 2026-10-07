@@ -1,86 +1,245 @@
 # AI Sales Analytics
 
-An AI-powered sales analytics and business reporting system built with Python, Pandas, Matplotlib, and Google Gemini API.
+An end-to-end sales analytics and AI-powered business reporting system built with Python, Pandas, SQLite, SQL, Matplotlib, and Google Gemini API.
 
-The project processes sales data, calculates business KPIs, analyzes product and regional performance, generates visual reports, and uses generative AI to produce an executive-level business report.
+The project processes sales data, validates the dataset, stores the data in a relational database, calculates business KPIs, analyzes product, regional and monthly performance, generates visual reports, and uses generative AI to produce an executive-level business report.
 
 ---
 
 ## Project Overview
 
-AI Sales Analytics was developed as a portfolio project combining:
+AI Sales Analytics is designed as a small-scale business intelligence pipeline.
 
-- Data analysis
-- Business intelligence
-- Generative AI
-- Automated reporting
-- Python software development
+The system transforms raw sales data into structured analytics and actionable business insights.
 
-The system takes structured sales data as input and transforms it into analytical insights, visualizations, a traditional business report, and an AI-generated executive report.
+### Data Pipeline
+
+```text
+sales_data.csv
+      │
+      ▼
+Data Validation
+      │
+      ▼
+SQLite Database
+      │
+      ▼
+Pandas Analytics
+      │
+      ├───────────────┐
+      ▼               ▼
+     KPIs        Business Analysis
+      │               │
+      ├───────┬───────┤
+      ▼       ▼       ▼
+   Product  Region  Monthly
+   Analysis Analysis Analysis
+      │       │       │
+      └───────┴───────┘
+              │
+              ▼
+       Matplotlib Reports
+              │
+              ▼
+        Business Report
+              │
+              ▼
+          Gemini AI
+              │
+              ▼
+    Executive Business Report
+```
 
 ---
 
 ## Features
 
-- Load and validate sales data with Pandas
-- Clean and process numerical and date-based data
-- Calculate key performance indicators (KPIs)
-- Analyze product performance
-- Analyze regional performance
-- Analyze monthly revenue trends
-- Identify top-performing products
-- Generate revenue visualizations with Matplotlib
-- Generate a structured business report
-- Generate an AI-powered executive report using Google Gemini API
-- Store generated reports automatically
+- Sales data generation
+- CSV data processing
+- Data validation
+- Missing-value detection
+- Numeric data validation
+- Revenue consistency validation
+- SQLite database integration
+- SQL analytics queries
+- KPI calculation
+- Product performance analysis
+- Regional performance analysis
+- Monthly revenue analysis
+- Top-product analysis
+- Matplotlib visualizations
+- Automated business report generation
+- Google Gemini AI executive reporting
+- Partial current-month detection
 - Unit testing with Python `unittest`
-- Secure API key management using environment variables
 
 ---
 
-## Architecture
+## Key Performance Indicators
+
+The system calculates:
+
+- Total Revenue
+- Total Quantity Sold
+- Average Revenue per Transaction
+
+It also identifies:
+
+- Best-performing product
+- Best-performing region
+- Best completed month
+- Lowest completed month
+- Top products
+
+---
+
+## AI Business Reporting
+
+Google Gemini API is used to transform the generated business report into an executive-level report.
+
+The AI report contains:
+
+1. Executive Summary
+2. Key Findings
+3. Product Performance
+4. Regional Performance
+5. Monthly Performance
+6. Business Recommendations
+
+The AI prompt is designed to:
+
+- Use only provided information
+- Avoid inventing facts
+- Distinguish facts from recommendations
+- Avoid unsupported causal explanations
+- Handle incomplete current-month data correctly
+
+---
+
+## Database & SQL
+
+The project uses SQLite for structured data storage.
+
+The database is generated automatically by the application and is excluded from version control.
+
+Example SQL analysis:
+
+```sql
+SELECT
+    product,
+    SUM(revenue) AS total_revenue
+FROM sales
+GROUP BY product
+ORDER BY total_revenue DESC;
+```
+
+Regional performance:
+
+```sql
+SELECT
+    region,
+    SUM(revenue) AS total_revenue,
+    SUM(quantity) AS total_quantity
+FROM sales
+GROUP BY region
+ORDER BY total_revenue DESC;
+```
+
+---
+
+## Data Validation
+
+Before entering the analysis pipeline, the dataset is validated for:
+
+- Required columns
+- Missing values
+- Numeric values
+- Positive quantities
+- Positive unit prices
+- Positive revenue values
+- Revenue consistency
+
+Revenue is validated using:
 
 ```text
-Sales Data (CSV)
-       │
-       ▼
-Data Loader
-       │
-       ▼
-Pandas Data Processing
-       │
-       ▼
-Analytics Engine
-       │
-       ├── KPI Analysis
-       ├── Product Analysis
-       ├── Regional Analysis
-       └── Monthly Analysis
-       │
-       ▼
-Business Report
-       │
-       ▼
-Google Gemini API
-       │
-       ▼
-AI Executive Report
+quantity × unit_price = revenue
 ```
+
+This prevents invalid data from entering the analytics pipeline.
+
+---
+
+## Testing
+
+The project uses Python's built-in `unittest` framework.
+
+Current test coverage includes:
+
+- KPI calculations
+- Product analysis
+- Regional analysis
+- Monthly analysis
+- Top-product analysis
+- Required-column validation
+- Missing-value validation
+- Negative-value validation
+- Revenue consistency validation
+- SQLite database creation
+- SQLite data storage and retrieval
+
+Run all tests:
+
+```bash
+python -m unittest discover -s tests -v
+```
+
+Current status:
+
+```text
+14 tests passed
+```
+
+---
+
+## Generated Reports
+
+The project automatically generates:
+
+```text
+reports/
+├── ai_business_report.txt
+├── business_report.txt
+├── monthly_revenue.png
+├── product_revenue.png
+└── region_revenue.png
+```
+
+### Monthly Revenue Trend
+
+![Monthly Revenue](reports/monthly_revenue.png)
+
+### Revenue by Product
+
+![Product Revenue](reports/product_revenue.png)
+
+### Revenue by Region
+
+![Regional Revenue](reports/region_revenue.png)
 
 ---
 
 ## Technologies
 
-| Technology | Purpose |
-|------------|---------|
-| Python | Core programming language |
-| Pandas | Data processing and analysis |
-| Matplotlib | Data visualization |
-| Google Gemini API | AI-powered business reporting |
-| python-dotenv | Environment variable management |
-| unittest | Unit testing |
-| Git | Version control |
-| GitHub | Source code hosting |
+- Python
+- Pandas
+- SQLite
+- SQL
+- Matplotlib
+- Google Gemini API
+- python-dotenv
+- unittest
+- Git
+- GitHub
 
 ---
 
@@ -91,6 +250,9 @@ AI Sales Analytics/
 │
 ├── data/
 │   └── sales_data.csv
+│
+├── database/
+│   └── queries.sql
 │
 ├── reports/
 │   ├── ai_business_report.txt
@@ -104,268 +266,108 @@ AI Sales Analytics/
 │   ├── analyzer.py
 │   ├── business_report.py
 │   ├── data_loader.py
+│   ├── database.py
 │   ├── generate_data.py
 │   ├── main.py
 │   └── report.py
 │
 ├── tests/
-│   └── test_analyzer.py
+│   ├── test_analyzer.py
+│   ├── test_data_loader.py
+│   └── test_database.py
 │
 ├── .gitignore
-├── requirements.txt
-└── README.md
+├── README.md
+└── requirements.txt
 ```
-
----
-
-## Data
-
-The project uses a generated dataset containing 1,000 sales records.
-
-Each record contains:
-
-- Date
-- Product
-- Category
-- Region
-- Quantity
-- Unit Price
-- Revenue
-
-The dataset includes multiple products and regions to simulate a realistic sales analytics scenario.
-
----
-
-## Analytics
-
-The analytics engine calculates several business metrics.
-
-### Key Performance Indicators
-
-- Total revenue
-- Total quantity sold
-- Average revenue per transaction
-
-### Product Analysis
-
-Products are grouped and ranked according to:
-
-- Total revenue
-- Total quantity sold
-
-### Regional Analysis
-
-Regions are analyzed according to:
-
-- Total revenue
-- Total quantity sold
-
-### Monthly Analysis
-
-Revenue is grouped by month to identify:
-
-- Highest-performing months
-- Lowest-performing months
-- Revenue trends
-
----
-
-## Visual Reports
-
-The project generates three visualizations using Matplotlib:
-
-### Monthly Revenue Trend
-
-Shows revenue changes across months.
-
-### Revenue by Product
-
-Compares revenue generated by each product.
-
-### Revenue by Region
-
-Compares regional revenue performance.
-
-Generated charts are stored in the `reports/` directory.
-
----
-
-## Business Reporting
-
-The system automatically generates a structured business report containing:
-
-- Key performance indicators
-- Best-performing product
-- Best-performing region
-- Highest-revenue month
-- Lowest-revenue month
-- Business insights
-
-The report is saved as:
-
-```text
-reports/business_report.txt
-```
-
----
-
-## AI Integration
-
-Google Gemini API is used to transform the analytical business report into an executive-level report.
-
-The AI receives the calculated business insights and generates:
-
-1. Executive Summary
-2. Key Findings
-3. Product Performance
-4. Regional Performance
-5. Monthly Performance
-6. Business Recommendations
-
-The generated report is saved as:
-
-```text
-reports/ai_business_report.txt
-```
-
-The Gemini API key is stored locally using an environment variable and is excluded from version control through `.gitignore`.
 
 ---
 
 ## Installation
 
-### 1. Clone the repository
+Clone the repository:
 
 ```bash
 git clone https://github.com/ozcanfatih551/ai-sales-analytics.git
+```
+
+Navigate to the project directory:
+
+```bash
 cd ai-sales-analytics
 ```
 
-### 2. Install dependencies
+Create a virtual environment:
 
 ```bash
-python -m pip install -r requirements.txt
+python -m venv .venv
 ```
 
-### 3. Configure the Gemini API key
+Activate it on Windows:
 
-Create a `.env` file in the project root:
+```bash
+.venv\Scripts\activate
+```
+
+Install dependencies:
+
+```bash
+pip install -r requirements.txt
+```
+
+Create a `.env` file:
 
 ```env
 GEMINI_API_KEY=your_api_key_here
 ```
 
-The `.env` file is intentionally excluded from Git.
-
 ---
 
 ## Usage
 
-Run the main application:
+Run the complete analytics pipeline:
 
 ```bash
 python src/main.py
 ```
 
-The program will:
+The application will:
 
-1. Load the sales dataset
-2. Validate and clean the data
-3. Calculate analytics
-4. Generate visualizations
-5. Generate the business report
-6. Send the business report to Gemini
-7. Generate the AI executive report
-8. Save the generated reports
-
----
-
-## Generate New Sales Data
-
-A new dataset can be generated using:
-
-```bash
-python src/generate_data.py
-```
-
-This creates a new `sales_data.csv` file containing simulated sales records.
-
----
-
-## Testing
-
-The project includes unit tests for the analytics engine.
-
-Run all tests with:
-
-```bash
-python -m unittest discover -s tests -v
-```
-
-The current test suite covers:
-
-- KPI calculations
-- Product performance
-- Regional performance
-- Monthly sales
-- Top products
-
----
-
-## Example Results
-
-A sample execution of the project produced:
-
-```text
-Total Quantity: 5405
-Total Revenue: 60,521,870.58 TL
-```
-
-The generated business report identified:
-
-```text
-Best Performing Product: Laptop
-Best Performing Region: Bursa
-Highest Revenue Month: 2026-03
-Lowest Revenue Month: 2026-10
-```
-
-Because the project supports dataset regeneration, analytical results may change when a new dataset is generated.
-
----
-
-## Security
-
-The Gemini API key is never stored in the source code.
-
-Environment variables are loaded using `python-dotenv`, while `.env` is excluded through `.gitignore`.
-
-Never commit API keys or other secrets to the repository.
+1. Load and validate the sales dataset.
+2. Create/update the SQLite database.
+3. Load the data from SQLite.
+4. Calculate KPIs.
+5. Analyze products and regions.
+6. Analyze monthly performance.
+7. Generate charts.
+8. Generate a business report.
+9. Send the report to Gemini.
+10. Generate an executive AI report.
 
 ---
 
 ## Limitations
 
-- The dataset is simulated rather than connected to a real business database.
-- Business insights depend on the quality of the input data.
-- The AI-generated report is based only on the analytical report provided to the model.
-- The project is intended as an educational and portfolio project rather than a production enterprise analytics platform.
+This project uses a synthetic sales dataset created for educational and portfolio purposes.
+
+The analytics should therefore not be interpreted as real-world business performance.
+
+The AI-generated recommendations are based only on the provided dataset and should be reviewed by a human before being used for real business decisions.
 
 ---
 
 ## Future Improvements
 
-Planned improvements include:
+Potential future improvements include:
 
-- n8n-based workflow automation
-- Automated report delivery
+- n8n workflow automation
+- Automated email/report delivery
 - Interactive dashboards
 - Additional business KPIs
-- More advanced statistical analysis
-- Database integration
-- Automated data ingestion
-- Improved anomaly detection
-- Additional AI-generated business insights
+- More advanced forecasting
+- Anomaly detection
+- Larger real-world datasets
+- Role-based dashboard access
 
 ---
 
@@ -373,19 +375,8 @@ Planned improvements include:
 
 **Fatih Özcan**
 
-Management Information Systems (MIS) student and Computer Engineering double-major student.
+Management Information Systems Student  
+Computer Engineering Double Major Student
 
-Interested in:
-
-- Data Analytics
-- Artificial Intelligence
-- Cybersecurity
-- Software Development
-- Business Intelligence
-- Automation
-
----
-
-## License
-
-This project is available for educational and portfolio purposes.
+GitHub:  
+https://github.com/ozcanfatih551
